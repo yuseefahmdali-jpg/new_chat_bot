@@ -16,6 +16,29 @@
   --shadow-hover: 0 20px 45px rgba(110, 72, 170, 0.25);
   --border-radius: 24px;
 }
+.telegram-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #0088cc;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 9999;
+  transition: 0.3s ease;
+}
+
+.telegram-float:hover {
+  transform: scale(1.1);
+  background-color: #0077b5;
+}
 
 * {
   box-sizing: border-box;
@@ -180,6 +203,7 @@ input:focus, textarea:focus {
   background: var(--primary-gradient);
   color: #fff;
   box-shadow: 0 8px 20px rgba(110, 72, 170, 0.3);
+ margin-top: 25px;
 }
 
 .btn.primary:hover {

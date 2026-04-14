@@ -11,6 +11,7 @@
     <div class="hero-text">
       <p class="eyebrow">Smart Reply Bot</p>
       <h1>بوت الردود الذكية</h1>
+      <h6>أهلاً بك 👋هذا النظام مطوّر بواسطة يوسف الظاهري </h6>
       <p class="lead">نظام ذكي لتحليل الرسائل والردّ عليها تلقائياً مع حفظ دائم للمستخدمين والمحادثات ودعم مباشر من الموظفين</p>
       <ul>
         <li><strong>تعريف تلقائي للمستخدم على نفس الجهاز</strong></li>
@@ -78,7 +79,7 @@
       <div id="chatMessages" class="chat-messages">
         <div class="bubble assistant welcome-bubble">
           <div class="bubble-content">
-            🤖 <strong>مرحباً بك!</strong> سيتم التعرف عليك تلقائياً على هذا الجهاز وتحميل محادثتك السابقة إن وُجدت.
+            🤖 <strong>مرحباً بك! </strong> سيتم التعرف عليك تلقائياً على هذا الجهاز وتحميل محادثتك السابقة إن وُجدت.
           </div>
           <div class="bubble-suggestions" id="welcomeSuggestions">
             <button class="suggestion-chip" data-msg="ابدأ">🚀 ابدأ</button>
@@ -95,6 +96,7 @@
 
       <form id="chatForm" class="chat-form">
         <input type="text" id="chatInput" placeholder="اكتب رسالتك..." maxlength="1000" autocomplete="off" />
+      
         <button class="btn primary" type="submit">إرسال ↑</button>
       </form>
 
@@ -109,13 +111,22 @@
       </div>
       <pre id="historyOutput" class="code-box">السجل سيظهر هنا...</pre>
     </section>
+    <a href="https://t.me/y7os_10"
+   class="telegram-float"
+   target="_blank">
+   📩
+</a>
+
   </main>
 
   <footer class="footer">
     <p>© 2026 بوت الردود الذكية — Smart Reply Bot</p>
     <p style="font-size:0.8rem;opacity:0.7">مبني بـ Node.js · Express · PostgreSQL · WebSocket</p>
-    <p>YUSEEF_AHMED_AL_DHAHRY</p>
+    <footer style="text-align:center; margin-top:20px; opacity:0.7;">
+  تم التطوير بواسطة يوسف الظاهري 🚀
+</footer>
   </footer>
+  
 
   <script src="app.js"></script>
 </body>
