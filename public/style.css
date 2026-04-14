@@ -6,8 +6,8 @@
   --secondary-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); /* Soft Pink/Rose */
   --accent-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%); /* Sunset Gold */
   
-  --bg-main: #ffd446;
-  --glass-bg: rgba(255, 255, 255, 0.85);
+  --bg-main: #b6c8fa;
+  --glass-bg: rgba(141, 121, 253, 0.85);
   --text-dark: #2d3436;
   --text-light: #ffffff;
   --text-muted: #636e72;
