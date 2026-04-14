@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>بوت الردود الذكية</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Smart Reply Bot</p>
+      <h1>بوت الردود الذكية</h1>
+      <p class="lead">نظام ذكي لتحليل الرسائل والردّ عليها تلقائياً مع دعم مباشر من الموظفين</p>
+      <ul>
+        <li><strong>تحليل المشاعر والنوايا</strong></li>
+        <li><strong>فلترة المحتوى غير اللائق</strong></li>
+        <li><strong>نظام تذاكر الدعم</strong></li>
+        <li><strong>دعم اللغة العربية بالكامل</strong></li>
+      </ul>
+    </div>
+    <div class="hero-card">
+      <div class="metric"><strong>تدفق العمل</strong><span>إرسال → تحليل → رد فوري</span></div>
+      <div class="metric"><strong>التقنيات</strong><span>Node.js · Express · SQLite · WebSocket</span></div>
+      <div class="metric"><strong>الحماية</strong><span>Sanitization · Anti-Injection · Filtering</span></div>
+      <div class="metric"><strong>التكامل</strong><span>جاهز للربط مع WhatsApp & Telegram</span></div>
+    </div>
+  </header>
+
+  <br><hr><br>
+
+  <div class="hero-actions">
+    <button id="pingBtn" class="btn primary">🔌 اختبار الاتصال</button>
+    <span id="pingStatus" class="status-pill">جاهز</span>
+  </div>
+
+  <br>
+
+  <!-- ═══════════════════ MAIN GRID ═══════════════════ -->
+  <main class="grid">
+
+    <!-- Panel 1: نموذج التواصل -->
+    <section class="panel">
+      <h2>📝 نموذج التواصل الذكي</h2>
+      <form id="contactForm" class="stack">
+        <label>الاسم
+          <input type="text" id="name" placeholder="أدخل اسمك" maxlength="100" />
+        </label>
+        <label>البريد الإلكتروني
+          <input type="email" id="email" placeholder="example@email.com" maxlength="200" />
+        </label>
+        <label>الموضوع
+          <input type="text" id="topic" placeholder="موضوع الرسالة" maxlength="200" />
+        </label>
+        <label>الرسالة
+          <textarea id="message" rows="6" placeholder="اكتب رسالتك هنا..." maxlength="2000"></textarea>
+        </label>
+        <button class="btn primary" type="submit">🔍 تحليل الرسالة</button>
+      </form>
+    </section>
+
+    <!-- Panel 2: نتيجة التحليل -->
+    <section class="panel">
+      <h2>📊 نتيجة التحليل</h2>
+      <div id="analysisResult" class="analysis-result hidden">
+        <div class="result-row"><span class="label">النية:</span><span id="resIntent" class="badge"></span></div>
+        <div class="result-row"><span class="label">المشاعر:</span><span id="resSentiment" class="badge"></span></div>
+        <div class="result-row"><span class="label">الملخص:</span><span id="resSummary"></span></div>
+        <div class="result-row"><span class="label">الرد المقترح:</span></div>
+        <div id="resReply" class="reply-box"></div>
+        <div class="result-row"><span class="label">اقتراحات:</span></div>
+        <div id="resSuggestions" class="suggestions-row"></div>
+        <div class="result-row"><span class="label">التصعيد:</span><span id="resEscalate" class="badge"></span></div>
+      </div>
+      <pre id="analysisOutput" class="code-box">سيظهر تحليل الرسالة هنا...</pre>
+    </section>
+
+    <!-- Panel 3: الدردشة الذكية -->
+    <section class="panel chat-panel">
+      <h2>💬 الدردشة الذكية</h2>
+      <div id="wsLog" class="mini-log">⏳ جارٍ الاتصال...</div>
+
+      <div id="chatMessages" class="chat-messages">
+        <!-- رسالة الترحيب -->
+        <div class="bubble assistant welcome-bubble">
+          <div class="bubble-content">
+            🤖 <strong>مرحباً بك!</strong> كيف يمكنني مساعدتك اليوم؟
+          </div>
+          <div class="bubble-suggestions" id="welcomeSuggestions">
+            <button class="suggestion-chip" data-msg="ابدأ">🚀 ابدأ</button>
+            <button class="suggestion-chip" data-msg="مساعدة">❓ مساعدة</button>
+            <button class="suggestion-chip" data-msg="تواصل مع الدعم">🎫 تواصل مع الدعم</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- معلومات التذكرة الحالية -->
+      <div id="ticketInfo" class="ticket-info hidden">
+        🎫 تذكرة الدعم النشطة: <strong id="ticketIdDisplay"></strong>
+        <button class="btn btn-sm secondary" id="closeTicketBtn">إغلاق التذكرة</button>
+      </div>
+
+      <form id="chatForm" class="chat-form">
+        <input type="text" id="chatInput" placeholder="اكتب رسالتك..." maxlength="1000" autocomplete="off" />
+        <button class="btn primary" type="submit">إرسال ↑</button>
+      </form>
+
+      <div id="chatSuggestions" class="suggestions-row chat-suggestions"></div>
+    </section>
+
+    <!-- Panel 4: سجل المحادثة -->
+    <section class="panel">
+      <h2>📂 سجل المحادثة</h2>
+      <div style="display:flex;gap:10px;margin-bottom:15px">
+        <button id="historyBtn" class="btn secondary">📜 عرض السجل</button>
+        <button id="clearHistoryBtn" class="btn secondary">🗑️ مسح الشات</button>
+      </div>
+      <pre id="historyOutput" class="code-box">السجل سيظهر هنا...</pre>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 بوت الردود الذكية — Smart Reply Bot</p>
+    <p style="font-size:0.8rem;opacity:0.7">مبني بـ Node.js · Express · SQLite · WebSocket</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

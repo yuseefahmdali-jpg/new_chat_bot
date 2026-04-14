@@ -1,0 +1,23 @@
+### فحص الخادم
+GET http://localhost:3000/api/demo/ping
+
+### تحليل نموذج
+POST http://localhost:3000/api/contact/analyze
+Content-Type: application/json
+
+{
+  "sessionId": "lesson-unit-4",
+  "name": "سارة محمود",
+  "email": "sara@example.com",
+  "topic": "مشكلة في الطلب ORD20488",
+  "message": "مرحباً، طلبي ORD20488 متأخر من يوم 12/02/2026 ولم يصلني شيء حتى الآن."
+}
+
+### إرسال رسالة للدردشة
+POST http://localhost:3000/api/chat/send
+Content-Type: application/json
+
+{
+  "sessionId": "lesson-unit-4",
+  "message": "اعطني رداً قصيراً ومهنياً للعميل"
+}

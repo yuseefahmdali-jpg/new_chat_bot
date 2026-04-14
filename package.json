@@ -1,0 +1,21 @@
+{
+  "name": "smart-contact-ai-demo",
+  "version": "2.0.0",
+  "description": "Smart Chat Bot with PostgreSQL + Telegram Support",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "node-telegram-bot-api": "^0.66.0",
+    "pg": "^8.13.3",
+    "ws": "^8.18.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
